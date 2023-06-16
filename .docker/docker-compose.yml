@@ -13,7 +13,7 @@ services:
             MYSQL_USER: ${MYSQL_USER}
             MYSQL_PASSWORD: ${MYSQL_PASSWORD}
         ports:
-            - 3306:3306
+            - "3308:3306"
         networks:
             - symfony_app
     php:
@@ -23,8 +23,10 @@ services:
                 TIMEZONE: ${TIMEZONE}
         volumes:
             - ../:/var/www/symfony:cached
-            - symfony_app_var:/var/www/symfony/var
-            - symfony_app_vendor:/var/www/symfony/vendor
+            - ../var:/var/www/symfony/var
+            - ../vendor:/var/www/symfony/vendor
+            - ./php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+            - ./php/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
         networks:
             - symfony_app
     nginx:
@@ -32,18 +34,16 @@ services:
             context: ./nginx
         volumes:
             - ../:/var/www/symfony:cached
-            - symfony_app_var:/var/www/symfony/var
-            - symfony_app_vendor:/var/www/symfony/vendor
+            - ../var:/var/www/symfony/var
+            - ../vendor:/var/www/symfony/vendor
         ports:
-            - 80:80
+            - "8089:80"
         networks:
             - symfony_app
         env_file:
             - .env.nginx.local
 
 volumes:
-    symfony_app_var:
-    symfony_app_vendor:
     db_app:
 
 networks:

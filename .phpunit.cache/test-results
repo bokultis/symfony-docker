@@ -1,0 +1,1 @@
+{"version":1,"defects":{"App\\Tests\\Unit\\Controller\\MoviesControllerTest::testIndex":5,"App\\Tests\\Unit\\Controller\\MoviesControllerTest::testOldMethod":5},"times":{"App\\Tests\\Unit\\Controller\\MoviesControllerTest::testIndex":0.003,"App\\Tests\\Unit\\Controller\\MoviesControllerTest::testOldMethod":0}}

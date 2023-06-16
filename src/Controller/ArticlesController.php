@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -11,6 +11,6 @@ class ArticlesController extends AbstractController
     #[Route(path: '/articles', name: 'articles', methods: ['GET'])]
     public function list(): Response
     {
-        return new Response('Welcome to Latte and Code ');
+        return new Response('Welcome to Latte and Code tadaaaa ');
     }
 }
